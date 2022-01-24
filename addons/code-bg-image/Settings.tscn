@@ -1,0 +1,223 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/code-bg-image/Settings.gd" type="Script" id=1]
+[ext_resource path="res://addons/code-bg-image/load_image.gd" type="Script" id=2]
+[ext_resource path="res://addons/code-bg-image/stretch_mode.gd" type="Script" id=3]
+[ext_resource path="res://addons/code-bg-image/close.gd" type="Script" id=4]
+[ext_resource path="res://addons/code-bg-image/modulate.gd" type="Script" id=5]
+[ext_resource path="res://addons/code-bg-image/Scale.gd" type="Script" id=6]
+[ext_resource path="res://addons/code-bg-image/float_input.tscn" type="PackedScene" id=7]
+
+[node name="Settings" type="HBoxContainer"]
+margin_right = 607.0
+margin_bottom = 162.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="."]
+margin_right = 201.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Panel" type="Panel" parent="Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 194.0
+margin_bottom = 155.0
+hint_tooltip = "Drop your image here from Godot FileSystem Dock
+or use Select Image FileDialog"
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 7.0
+margin_top = 57.0
+margin_right = 194.0
+margin_bottom = 105.0
+text = "drop
+image
+here"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 205.0
+margin_right = 607.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 402.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 132.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+text = "Image"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 136.0
+margin_right = 402.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_right = 250.0
+margin_bottom = 24.0
+focus_next = NodePath("../../../HBoxContainer2/OptionButton")
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "res://icon.png"
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="LoadImage" type="ToolButton" parent="VBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 254.0
+margin_right = 266.0
+margin_bottom = 24.0
+hint_tooltip = "Select different Image"
+script = ExtResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer/HBoxContainer/HBoxContainer/LoadImage"]
+margin_right = 658.0
+margin_bottom = 433.0
+window_title = "Open a File"
+resizable = true
+mode = 0
+filters = PoolStringArray( "*.png", "*.jpg" )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 402.0
+margin_bottom = 48.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_top = 3.0
+margin_right = 132.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+text = "Stretch Mode"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 136.0
+margin_right = 402.0
+margin_bottom = 20.0
+focus_previous = NodePath("../../HBoxContainer/HBoxContainer/LineEdit")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 52.0
+margin_right = 402.0
+margin_bottom = 76.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5"]
+margin_top = 5.0
+margin_right = 132.0
+margin_bottom = 19.0
+hint_tooltip = "Experimental !
+Works only with some settings"
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "Scale"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer5"]
+margin_left = 136.0
+margin_right = 402.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer5/HBoxContainer"]
+margin_right = 131.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5/HBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "x"
+
+[node name="x" parent="VBoxContainer/HBoxContainer5/HBoxContainer/HBoxContainer" instance=ExtResource( 7 )]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer5/HBoxContainer"]
+margin_left = 135.0
+margin_right = 266.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5/HBoxContainer/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 7.0
+margin_bottom = 19.0
+text = "y"
+
+[node name="y" parent="VBoxContainer/HBoxContainer5/HBoxContainer/HBoxContainer2" instance=ExtResource( 7 )]
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 402.0
+margin_bottom = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+margin_top = 3.0
+margin_right = 132.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+text = "Modulate"
+
+[node name="Modulate" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer3"]
+margin_left = 136.0
+margin_right = 402.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 104.0
+margin_right = 402.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 142.0
+margin_right = 402.0
+margin_bottom = 162.0
+alignment = 2
+
+[node name="Close" type="Button" parent="VBoxContainer/HBoxContainer4"]
+margin_left = 338.0
+margin_right = 402.0
+margin_bottom = 20.0
+hint_tooltip = "Close settings panel.
+You can open it later with Project-Tools"
+size_flags_horizontal = 0
+text = "X CLOSE"
+script = ExtResource( 4 )
+
+[connection signal="file_selected" from="VBoxContainer/HBoxContainer/HBoxContainer/LoadImage/FileDialog" to="VBoxContainer/HBoxContainer/HBoxContainer/LoadImage" method="_on_FileDialog_file_selected"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer2/OptionButton" to="VBoxContainer/HBoxContainer2/OptionButton" method="_on_item_selected"]
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer5/HBoxContainer/HBoxContainer/x" to="VBoxContainer/HBoxContainer5/HBoxContainer" method="_on_x_text_entered"]
+[connection signal="text_entered" from="VBoxContainer/HBoxContainer5/HBoxContainer/HBoxContainer2/y" to="VBoxContainer/HBoxContainer5/HBoxContainer" method="_on_y_text_entered"]
+[connection signal="popup_closed" from="VBoxContainer/HBoxContainer3/Modulate" to="VBoxContainer/HBoxContainer3/Modulate" method="_on_popup_closed"]

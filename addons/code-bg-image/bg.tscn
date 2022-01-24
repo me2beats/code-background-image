@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/code-bg-image/texture_rect.tscn" type="PackedScene" id=1]
+
+[node name="Background" type="Control"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = -2.0
+rect_clip_content = true
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "A backround node.
+You can use it as a child of TextEdit"
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.235294, 0.235294, 0.27451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" parent="." instance=ExtResource( 1 )]
+margin_top = 598.0
+margin_bottom = 598.0
+mouse_filter = 2

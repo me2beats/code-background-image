@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/code-bg-image/float_line_edit.gd" type="Script" id=1]
+
+[node name="LineEdit" type="LineEdit"]
+margin_left = 11.0
+margin_right = 131.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1.0"
+script = ExtResource( 1 )
